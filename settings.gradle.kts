@@ -18,6 +18,7 @@ include("L09-docker")
 include("L10-byteCodes")
 include("L11-java8")
 include("L12-solid")
+include("L13-creationalPatterns")
 
 pluginManagement {
     val jgitver: String by settings
