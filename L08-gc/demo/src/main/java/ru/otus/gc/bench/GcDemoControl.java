@@ -1,7 +1,10 @@
 package ru.otus.gc.bench;
 
-@SuppressWarnings("java:S106")
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 class GcDemoControl implements GcDemoControlMBean {
+    private static final Logger logger = LoggerFactory.getLogger(GcDemoControl.class);
     private final GcDemo gcDemo;
 
     public GcDemoControl(GcDemo gcDemo) {
@@ -11,13 +14,13 @@ class GcDemoControl implements GcDemoControlMBean {
     @Override
     public int getObjectArraySize() {
         int size = gcDemo.getObjectArraySize();
-        System.out.println("current size:" + size);
+        logger.info("current size:{}", size);
         return size;
     }
 
     @Override
     public void setObjectArraySize(int size) {
-        System.out.println("setting size:" + size);
+        logger.info("setting size:{}", size);
         gcDemo.setObjectArraySize(size);
     }
 }

@@ -3,9 +3,12 @@ package demo.generics.bounds;
 import demo.generics.bounds.entries.Cat;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings({"java:S106", "unchecked", "rawtypes", "java:S125", "java:S1144"})
+@SuppressWarnings({"unchecked", "rawtypes", "java:S125", "java:S1144"})
 public class Wildcard2 {
+    private static final Logger logger = LoggerFactory.getLogger(Wildcard2.class);
 
     public static void main(String[] args) {
         //
@@ -20,7 +23,7 @@ public class Wildcard2 {
 
         for (Cat cat : catList) {
             if (cat instanceof Cat) {
-                System.out.println(cat.getMyau());
+                logger.info(cat.getMyau());
             }
         }
 
@@ -40,7 +43,7 @@ public class Wildcard2 {
     // Unbounded Wildcards
     private static void printWild(List<?> animalList) {
         // animalList.add("внезапно добавленная строка"); //ошибка
-        animalList.forEach(System.out::println);
+        animalList.forEach(val -> logger.info("{}", val));
     }
 
     private static void printObj(List animalList) {

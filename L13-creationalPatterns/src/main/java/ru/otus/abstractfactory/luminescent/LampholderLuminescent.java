@@ -1,14 +1,17 @@
 package ru.otus.abstractfactory.luminescent;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.otus.abstractfactory.Lampholder;
 
 /**
  * @author sergey created on 18.09.18.
  */
-@SuppressWarnings("java:S106")
 public class LampholderLuminescent implements Lampholder {
+    private static final Logger logger = LoggerFactory.getLogger(LampholderLuminescent.class);
+
     @Override
     public void hold() {
-        System.out.println("Luminescent hold");
+        logger.info("Luminescent hold");
     }
 }

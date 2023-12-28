@@ -6,5 +6,4 @@ public interface Visitor {
     void visit(Transmission item);
 
     void visit(Brake item);
-    
 }

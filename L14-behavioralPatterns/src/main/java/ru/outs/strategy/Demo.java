@@ -1,7 +1,11 @@
 package ru.outs.strategy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Demo {
+    private static final Logger logger = LoggerFactory.getLogger(Demo.class);
+
     public static void main(String[] args) {
         var context = new Context();
         context.setStrategy(new Bus());
@@ -13,7 +17,7 @@ public class Demo {
         context.setStrategy(new Taxi());
         context.applyStrategy();
 
-        context.setStrategy(() -> System.out.println("rocket"));
+        context.setStrategy(() -> logger.info("rocket"));
         context.applyStrategy();
     }
 }

@@ -2,9 +2,11 @@ package functionalstyle;
 
 import java.util.function.Function;
 import java.util.function.IntSupplier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings("java:S106")
 public class Lambda {
+    private static final Logger logger = LoggerFactory.getLogger(Lambda.class);
 
     private String value;
 
@@ -12,10 +14,10 @@ public class Lambda {
         var lambda = new Lambda();
 
         var result = lambda.func(str -> str + "+mod", "testStr");
-        System.out.println(result);
+        logger.info(result);
 
         var result2 = lambda.func(val -> val * 10, 5);
-        System.out.println(result2);
+        logger.info("{}", result2);
 
         // "Билдер" экземпляров Lambda с инициализацией поля value константой
         var l = lambda.func(
@@ -24,15 +26,15 @@ public class Lambda {
                     return lb;
                 },
                 new Lambda());
-        System.out.println(l.value);
+        logger.info(l.value);
 
         // int[] initValue - не поле инстанса или класса, но сохраняет свое значение между вызовами
         // функции
         // Так работает, но ТАК ДЕЛАТЬ НЕ НАДО.
         var closure = lambda.generator();
-        System.out.println("1:" + closure.getAsInt());
-        System.out.println("2:" + closure.getAsInt());
-        System.out.println("3:" + closure.getAsInt());
+        logger.info("1:{}", closure.getAsInt());
+        logger.info("2:{}", closure.getAsInt());
+        logger.info("3:{}", closure.getAsInt());
     }
 
     private <T, R> R func(Function<T, R> func, T param) {

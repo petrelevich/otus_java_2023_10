@@ -3,7 +3,6 @@ package ru.otus.proxy.lazy;
 public class LazyProxy implements HeavyObject {
     private final HeavyObject heavyObject;
 
-
     public LazyProxy(HeavyObject heavyObject) {
         this.heavyObject = heavyObject;
     }

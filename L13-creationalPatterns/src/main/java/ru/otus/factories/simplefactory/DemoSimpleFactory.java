@@ -1,11 +1,15 @@
 package ru.otus.factories.simplefactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author sergey created on 19.09.18.
  * @author spv edited 28.08.20.
  */
-@SuppressWarnings("java:S106")
 public class DemoSimpleFactory {
+    private static final Logger logger = LoggerFactory.getLogger(DemoSimpleFactory.class);
+
     public static void main(String[] args) {
         // Пример:
         // У нас есть какая-то конфигурация
@@ -44,14 +48,14 @@ public class DemoSimpleFactory {
     }
 
     private static void readDataBad(ConfigurationFile config) {
-        System.out.println(config.params());
+        logger.atInfo().setMessage("{}").addArgument(config::params).log();
     }
 
     private static void readDataBad(ConfigurationDB config) {
-        System.out.println(config.params());
+        logger.atInfo().setMessage("{}").addArgument(config::params).log();
     }
 
     private static void readData(Configuration config) {
-        System.out.println(config.params());
+        logger.atInfo().setMessage("{}").addArgument(config::params).log();
     }
 }

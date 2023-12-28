@@ -1,7 +1,10 @@
 package ru.otus.proxy.security;
 
-public class SecurityProxy implements SecurityAccess {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class SecurityProxy implements SecurityAccess {
+    private static final Logger logger = LoggerFactory.getLogger(SecurityProxy.class);
     private final SecurityAccess securityAccess;
 
     public SecurityProxy(SecurityAccess securityAccess) {
@@ -10,8 +13,8 @@ public class SecurityProxy implements SecurityAccess {
 
     @Override
     public void access() {
-        System.out.println("before");
+        logger.info("before");
         securityAccess.access();
-        System.out.println("after");
+        logger.info("after");
     }
 }

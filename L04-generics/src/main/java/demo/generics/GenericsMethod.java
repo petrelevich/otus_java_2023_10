@@ -1,7 +1,10 @@
 package demo.generics;
 
-@SuppressWarnings({"java:S106"})
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class GenericsMethod {
+    private static final Logger logger = LoggerFactory.getLogger(GenericsMethod.class);
 
     public static void main(String[] args) {
         GenericsMethod genericsMethod = new GenericsMethod();
@@ -10,7 +13,7 @@ public class GenericsMethod {
     }
 
     private <K, V> V print(K key, V val) {
-        System.out.println("key:" + key + ", val:" + val);
+        logger.info("key:{}, val:{}", key, val);
         return val;
     }
 }

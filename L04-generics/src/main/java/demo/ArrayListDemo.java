@@ -5,42 +5,48 @@ import demo.generics.bounds.entries.Cat;
 import demo.generics.bounds.entries.HomeCat;
 import demo.generics.bounds.entries.WildCat;
 import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings({"java:S106"})
 public class ArrayListDemo {
+    private static final Logger logger = LoggerFactory.getLogger(ArrayListDemo.class);
+
     public static void main(String[] args) {
 
         Cat[] animalArr = new Cat[] {new HomeCat("Мурзик"), new HomeCat("Васька")};
         List<Cat> animalList = Arrays.asList(animalArr);
-        System.out.println(animalList);
+        logger.info("{}", animalList);
 
         animalArr[0] = new HomeCat("1");
-        System.out.println(animalList);
+        logger.info("{}", animalList);
 
         // animalList.add(new HomeCat("Мурка")); //Ошибка
 
         Animal[] catsArr = animalList.toArray(new Animal[0]);
-        System.out.println("catsArr:" + Arrays.toString(catsArr));
+        logger.atInfo()
+                .setMessage("catsArr:{}")
+                .addArgument(() -> Arrays.toString(catsArr))
+                .log();
 
         // copy(List<? super T> dest, List<? extends T> src)
         List<? super Cat> animalListDest = new ArrayList<>(animalList);
         Collections.copy(animalListDest, animalList);
-        System.out.println("homeCats:" + animalListDest);
+        logger.info("homeCats:{}", animalListDest);
 
         // Как убрать дубли
         List<String> strDubl = Arrays.asList("1", "2", "2", "4");
-        System.out.println("srtDubl:" + strDubl);
+        logger.info("srtDubl:{}", strDubl);
         Set<String> strDublFiltered = new HashSet<>(strDubl);
-        System.out.println("strDublFiltered:" + strDublFiltered);
+        logger.info("strDublFiltered:{}", strDublFiltered);
 
         // АвтоСортировка
         Set<Integer> sorted = new TreeSet<>();
         sorted.add(1);
         sorted.add(9);
-        System.out.println("sorted_1:" + sorted);
+        logger.info("sorted_1:{}", sorted);
         sorted.add(2);
         sorted.add(8);
-        System.out.println("sorted_2:" + sorted);
+        logger.info("sorted_2:{}", sorted);
 
         //
         List<Cat> newCats = new ArrayList<>();
@@ -52,6 +58,9 @@ public class ArrayListDemo {
         WildCat p = (WildCat) superCats.get(0);
         p.setName("leon");
 
-        System.out.println("New Cat :" + newCats.get(0).toString());
+        logger.atInfo()
+                .setMessage("New Cat :{}")
+                .addArgument(() -> newCats.get(0))
+                .log();
     }
 }

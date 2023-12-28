@@ -2,21 +2,27 @@ package ru.otus.reflection;
 
 import java.lang.reflect.Constructor;
 import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings("java:S106")
 public class ReflectionCreateObject {
+    private static final Logger logger = LoggerFactory.getLogger(ReflectionCreateObject.class);
+
     public static void main(String[] args) throws Exception {
 
         Class<DemoClass> clazz = DemoClass.class;
-        System.out.println("Class Name:" + clazz.getSimpleName());
+        logger.info("Class Name:{}", clazz.getSimpleName());
 
         Constructor<?>[] constructors = clazz.getConstructors();
-        System.out.println("--- constructors:");
-        System.out.println(Arrays.toString(constructors));
+        logger.info("--- constructors:");
+        logger.atInfo()
+                .setMessage("{}")
+                .addArgument(() -> Arrays.toString(constructors))
+                .log();
 
-        System.out.println("--- creating new object:");
+        logger.info("--- creating new object:");
         Constructor<DemoClass> constructor = clazz.getConstructor(String.class);
         DemoClass object = constructor.newInstance("testVal");
-        System.out.println("value:" + object.getValuePrivate());
+        logger.info("value:{}", object.getValuePrivate());
     }
 }

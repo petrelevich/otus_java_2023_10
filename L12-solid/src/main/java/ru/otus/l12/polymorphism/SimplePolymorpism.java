@@ -3,9 +3,13 @@ package ru.otus.l12.polymorphism;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings({"rawtypes", "java:S125", "java:S106"})
+@SuppressWarnings({"rawtypes", "java:S125"})
 public class SimplePolymorpism {
+    private static final Logger logger = LoggerFactory.getLogger(SimplePolymorpism.class);
+
     public static void main(String[] args) {
         // Плохо
         ArrayList list1 = new ArrayList();
@@ -24,23 +28,23 @@ public class SimplePolymorpism {
     }
 
     private static void doSomethingWithListBad(ArrayList list) {
-        System.out.println("doSomethingWithListBad(ArrayList list)");
+        logger.info("doSomethingWithListBad(ArrayList list)");
         for (var item : list) {
-            System.out.println(item);
+            logger.info("{}", item);
         }
     }
 
     private static void doSomethingWithListBad(LinkedList list) {
-        System.out.println("doSomethingWithListBad(LinkedList list)");
+        logger.info("doSomethingWithListBad(LinkedList list)");
         for (var item : list) {
-            System.out.println(item);
+            logger.info("{}", item);
         }
     }
 
     private static void doSomethingWithListGood(List list) {
-        System.out.println("doSomethingWithListGood(List list)");
+        logger.info("doSomethingWithListGood(List list)");
         for (var item : list) {
-            System.out.println(item);
+            logger.info("{}", item);
         }
     }
 }

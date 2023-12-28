@@ -1,15 +1,20 @@
 package ru.otus.facade;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class HellSystemA {
+    private static final Logger logger = LoggerFactory.getLogger(HellSystemA.class);
+
     public void actionA2() {
-        System.out.println("action A");
+        logger.info("action A");
     }
 
     public void actionAA() {
-        System.out.println("action AA");
+        logger.info("action AA");
     }
 
     public void actionAAA() {
-        System.out.println("action AAA");
+        logger.info("action AAA");
     }
 }

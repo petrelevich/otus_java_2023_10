@@ -2,18 +2,12 @@ package demo.generics;
 
 import java.time.LocalTime;
 import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings({
-    "java:S106",
-    "rawtypes",
-    "unchecked",
-    "java:S1481",
-    "java:S108",
-    "java:S1854",
-    "java:S1144",
-    "java:S125"
-})
+@SuppressWarnings({"rawtypes", "unchecked", "java:S1481", "java:S108", "java:S1854", "java:S1144", "java:S125"})
 public class Intro {
+    private static final Logger logger = LoggerFactory.getLogger(Intro.class);
 
     public static void main(String[] args) {
         //        new Intro().beforeGenerics();
@@ -33,7 +27,7 @@ public class Intro {
 
     private void printRow(List list) {
         for (Object item : list) { // Object !!!
-            System.out.println(item);
+            logger.info("{}", item);
         }
     }
 
@@ -51,7 +45,7 @@ public class Intro {
         long start = new Date().getTime();
         Collections.sort(list);
         long end = new Date().getTime();
-        System.out.println("delta " + (end - start) + " ms");
+        logger.info("delta {} ms", (end - start));
 
         list.add(2);
         list.add(3);
@@ -70,13 +64,13 @@ public class Intro {
         for (int val : list) { // конкретный тип
             summ += val;
         }
-        System.out.println("\nsumma:" + summ);
+        logger.info("\nsumma:{}", summ);
     }
 
     private <T> void print(List<T> list) {
-        System.out.println("");
+        logger.info("");
         for (T item : list) {
-            System.out.println(item);
+            logger.info("{}", item);
         }
     }
 }

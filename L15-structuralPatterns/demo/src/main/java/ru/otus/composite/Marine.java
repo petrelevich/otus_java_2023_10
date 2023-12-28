@@ -1,11 +1,16 @@
 package ru.otus.composite;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Морской пехотинец.
  */
 public class Marine implements Unit {
+    private static final Logger logger = LoggerFactory.getLogger(Marine.class);
+
     @Override
     public void move() {
-        System.out.println("Marine is moving");
+        logger.info("Marine is moving");
     }
 }

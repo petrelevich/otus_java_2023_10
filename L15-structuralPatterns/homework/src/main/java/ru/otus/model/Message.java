@@ -1,5 +1,6 @@
 package ru.otus.model;
 
+@SuppressWarnings({"java:S107", "java:S1135"})
 public class Message {
     private final long id;
     private final String field1;
@@ -13,9 +14,20 @@ public class Message {
     private final String field9;
     private final String field10;
 
-    //todo: 1. Добавить поля field11 - field13 (для field13 используйте класс ObjectForMessage)
+    // todo: 1. Добавить поля field11 - field13 (для field13 используйте класс ObjectForMessage)
 
-    private Message(long id, String field1, String field2, String field3, String field4, String field5, String field6, String field7, String field8, String field9, String field10) {
+    private Message(
+            long id,
+            String field1,
+            String field2,
+            String field3,
+            String field4,
+            String field5,
+            String field6,
+            String field7,
+            String field8,
+            String field9,
+            String field10) {
         this.id = id;
         this.field1 = field1;
         this.field2 = field2;
@@ -94,19 +106,18 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "id=" + id +
-                ", field1='" + field1 + '\'' +
-                ", field2='" + field2 + '\'' +
-                ", field3='" + field3 + '\'' +
-                ", field4='" + field4 + '\'' +
-                ", field5='" + field5 + '\'' +
-                ", field6='" + field6 + '\'' +
-                ", field7='" + field7 + '\'' +
-                ", field8='" + field8 + '\'' +
-                ", field9='" + field9 + '\'' +
-                ", field10='" + field10 + '\'' +
-                '}';
+        return "Message{" + "id="
+                + id + ", field1='"
+                + field1 + '\'' + ", field2='"
+                + field2 + '\'' + ", field3='"
+                + field3 + '\'' + ", field4='"
+                + field4 + '\'' + ", field5='"
+                + field5 + '\'' + ", field6='"
+                + field6 + '\'' + ", field7='"
+                + field7 + '\'' + ", field8='"
+                + field8 + '\'' + ", field9='"
+                + field9 + '\'' + ", field10='"
+                + field10 + '\'' + '}';
     }
 
     public static class Builder {
@@ -126,7 +137,18 @@ public class Message {
             this.id = id;
         }
 
-        private Builder(long id, String field1, String field2, String field3, String field4, String field5, String field6, String field7, String field8, String field9, String field10) {
+        private Builder(
+                long id,
+                String field1,
+                String field2,
+                String field3,
+                String field4,
+                String field5,
+                String field6,
+                String field7,
+                String field8,
+                String field9,
+                String field10) {
             this.id = id;
             this.field1 = field1;
             this.field2 = field2;

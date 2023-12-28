@@ -1,9 +1,13 @@
 package ru.otus.adapter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * SDS-адаптер.
  */
 public class SDSadapter implements SDSdril {
+    private static final Logger logger = LoggerFactory.getLogger(SDSadapter.class);
     private final Drill drill;
 
     public SDSadapter(Drill drill) {
@@ -14,6 +18,6 @@ public class SDSadapter implements SDSdril {
     public void action() {
         // Адаптер не содержит логики
         // Он делегирует работу адаптируемым классам
-        System.out.println(this.drill);
+        logger.info("{}", this.drill);
     }
 }

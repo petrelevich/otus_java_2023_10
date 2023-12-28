@@ -1,8 +1,8 @@
 package ru.otus.listener.homework;
 
+import java.util.Optional;
 import ru.otus.listener.Listener;
 import ru.otus.model.Message;
-import java.util.Optional;
 
 public class HistoryListener implements Listener, HistoryReader {
 

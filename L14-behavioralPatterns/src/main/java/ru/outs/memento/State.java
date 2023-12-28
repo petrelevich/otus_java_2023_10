@@ -10,7 +10,7 @@ public class State {
     }
 
     State(State state) {
-        //Не забывайте про "глубокую" копию
+        // Не забывайте про "глубокую" копию
         this.array = Arrays.copyOf(state.getArray(), state.getArray().length);
     }
 
@@ -20,8 +20,6 @@ public class State {
 
     @Override
     public String toString() {
-        return "State{" +
-                "array=" + (array == null ? null : Arrays.asList(array)) +
-                '}';
+        return "State{" + "array=" + (array == null ? null : Arrays.asList(array)) + '}';
     }
 }

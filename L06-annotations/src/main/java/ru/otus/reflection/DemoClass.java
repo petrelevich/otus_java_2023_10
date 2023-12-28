@@ -1,7 +1,11 @@
 package ru.otus.reflection;
 
-@SuppressWarnings({"java:S106", "java:S1104", "java:S1144"})
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@SuppressWarnings({"java:S1104", "java:S1144"})
 public class DemoClass {
+    private static final Logger logger = LoggerFactory.getLogger(DemoClass.class);
 
     public int publicFieldForDemo;
 
@@ -20,7 +24,7 @@ public class DemoClass {
     }
 
     private void privateMethod() {
-        System.out.println("privateMethod executed");
+        logger.info("privateMethod executed");
     }
 
     @Override

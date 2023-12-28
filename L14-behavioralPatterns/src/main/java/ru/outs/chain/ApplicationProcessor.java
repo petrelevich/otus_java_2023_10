@@ -1,6 +1,10 @@
 package ru.outs.chain;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 abstract class ApplicationProcessor {
+    private static final Logger logger = LoggerFactory.getLogger(ApplicationProcessor.class);
     private ApplicationProcessor next;
 
     private ApplicationProcessor getNext() {
@@ -25,10 +29,10 @@ abstract class ApplicationProcessor {
     public abstract String getProcessorName();
 
     private void before() {
-        System.out.println("before:" + getProcessorName());
+        logger.info("before:{}", getProcessorName());
     }
 
     private void after() {
-        System.out.println("after:" + getProcessorName());
+        logger.info("after:{}", getProcessorName());
     }
 }

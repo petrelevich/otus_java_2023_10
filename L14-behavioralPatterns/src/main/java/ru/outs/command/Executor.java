@@ -2,8 +2,11 @@ package ru.outs.command;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class Executor {
+    private static final Logger logger = LoggerFactory.getLogger(Executor.class);
     private final SomeObject object;
     private final Queue<Command> commands = new ArrayDeque<>();
 
@@ -19,7 +22,7 @@ class Executor {
         Command command;
         while ((command = commands.poll()) != null) {
             var result = command.execute(object);
-            System.out.println("command execution result:" + result);
+            logger.info("command execution result:{}", result);
         }
     }
 }

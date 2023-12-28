@@ -1,43 +1,50 @@
 package ru.otus.singleton;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author sergey created on 19.09.18.
  */
-@SuppressWarnings({"java:S106", "java:S3457", "java:S2440"})
+@SuppressWarnings({"java:S3457", "java:S2440"})
 public class Singleton {
+    private static final Logger logger = LoggerFactory.getLogger(Singleton.class);
+
     private Singleton() {
-        System.out.println("lazy creation");
+        logger.info("lazy creation");
     }
 
     static Singleton getInstance() {
-        System.out.println("getInstance");
+        logger.info("getInstance");
         return SingletonHolder.instance;
     }
 
     private static class SingletonHolder {
         static {
-            System.out.println("init SingletonHolder");
+            logger.info("init SingletonHolder");
         }
 
         static final Singleton instance = new Singleton();
     }
 }
 
-@SuppressWarnings({"java:S106", "java:S3457"})
+@SuppressWarnings({"java:S3457"})
 class SingletonDemo {
+    private static final Logger logger = LoggerFactory.getLogger(SingletonDemo.class);
+
     public static void main(String[] args) {
-        System.out.println("--- begin ---");
-        System.out.println("- singleton 1");
+        logger.info("--- begin ---");
+        logger.info("- singleton 1");
         Singleton singleton1 = Singleton.getInstance();
 
-        System.out.println();
-        System.out.println("- singleton 2");
+        logger.info("");
+        logger.info("- singleton 2");
         Singleton singleton2 = Singleton.getInstance();
 
-        System.out.println();
-        System.out.printf("singleton1 == singleton2 => %b\n", singleton1 == singleton2);
-        System.out.println(singleton1);
-        System.out.println(singleton2);
-        System.out.println("---end ---");
+        logger.info("");
+        logger.info("singleton1 == singleton2 => {}\n", singleton1 == singleton2);
+        logger.info("{}", singleton1);
+        logger.info("{}", singleton2);
+        logger.info("---end ---");
     }
 }

@@ -2,14 +2,17 @@ package ru.otus.flyweight.cow;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SmartList {
+    private static final Logger logger = LoggerFactory.getLogger(SmartList.class);
 
     private Data data;
 
     public SmartList() {
         this.data = new Data();
-        this.data.data = new ArrayList<>();
+        this.data.dataValues = new ArrayList<>();
         this.data.users = 1;
     }
 
@@ -18,13 +21,12 @@ public class SmartList {
         data.users += 1;
     }
 
-
     public int get(int n) {
-        return data.data.get(n);
+        return data.dataValues.get(n);
     }
 
     public int size() {
-        return data.data.size();
+        return data.dataValues.size();
     }
 
     public void add(int v) {
@@ -32,25 +34,24 @@ public class SmartList {
             data.users -= 1;
             data = data.copy();
         }
-        data.data.add(v);
+        data.dataValues.add(v);
     }
 
     public SmartList copy() {
         return new SmartList(data);
     }
 
-    private class Data {
-        List<Integer> data;
-        int users;
+    private static class Data {
+        private List<Integer> dataValues;
+        private int users;
 
         Data copy() {
             var res = new Data();
-            res.data = new ArrayList<>(data);
+            res.dataValues = new ArrayList<>(dataValues);
             res.users = 1;
             return res;
         }
     }
-
 
     public static void main(String[] args) {
         var a = new SmartList();
@@ -61,8 +62,7 @@ public class SmartList {
         b.get(0);
         b.add(3);
 
-        System.out.println(a.size());
-        System.out.println(b.size());
+        logger.info("{}", a.size());
+        logger.info("{}", b.size());
     }
-
 }

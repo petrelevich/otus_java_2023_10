@@ -13,12 +13,12 @@ public class Company {
     }
 
     public List<Department> getDepartments() {
-        
-        return Collections.unmodifiableList( departments );
+
+        return Collections.unmodifiableList(departments);
     }
 
-    public void addDepartment( Department department ) {
+    public void addDepartment(Department department) {
         department.company = this;
-        departments.add( department );
+        departments.add(department);
     }
 }

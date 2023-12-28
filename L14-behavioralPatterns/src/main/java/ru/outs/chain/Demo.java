@@ -1,6 +1,5 @@
 package ru.outs.chain;
 
-
 public class Demo {
     public static void main(String[] args) {
         var appl = new Application();

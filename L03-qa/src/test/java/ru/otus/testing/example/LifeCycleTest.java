@@ -1,9 +1,12 @@
 package ru.otus.testing.example;
 
 import org.junit.jupiter.api.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings({"java:S2699"})
 class LifeCycleTest {
+    private static final Logger logger = LoggerFactory.getLogger(LifeCycleTest.class);
 
     // Подготовительные мероприятия. Метод выполнится один раз, перед всеми тестами
     @BeforeAll
@@ -14,34 +17,34 @@ class LifeCycleTest {
     // Подготовительные мероприятия. Метод выполнится перед каждым тестом
     @BeforeEach
     public void setUp() {
-        System.out.print("\n@BeforeEach. ");
-        System.out.println("Экземпляр тестового класса: " + Integer.toHexString(hashCode()));
+        logger.info("\n@BeforeEach. ");
+        logger.info("Экземпляр тестового класса: {}", Integer.toHexString(hashCode()));
     }
 
     // Сам тест
     @Test
     void anyTest1() {
-        System.out.print("@Test: anyTest1. ");
-        System.out.println("Экземпляр тестового класса: " + Integer.toHexString(hashCode()));
+        logger.info("@Test: anyTest1. ");
+        logger.info("Экземпляр тестового класса: {}", Integer.toHexString(hashCode()));
     }
 
     // Еще тест
     @Test
     void anyTest2() {
-        System.out.print("@Test: anyTest2. ");
-        System.out.println("Экземпляр тестового класса: " + Integer.toHexString(hashCode()));
+        logger.info("@Test: anyTest2. ");
+        logger.info("Экземпляр тестового класса: {}", Integer.toHexString(hashCode()));
     }
 
     // Завершающие мероприятия. Метод выполнится после каждого теста
     @AfterEach
     public void tearDown() {
-        System.out.print("@AfterEach. ");
-        System.out.println("Экземпляр тестового класса: " + Integer.toHexString(hashCode()));
+        logger.info("@AfterEach. ");
+        logger.info("Экземпляр тестового класса: {}", Integer.toHexString(hashCode()));
     }
 
     // Завершающие мероприятия. Метод выполнится один раз, после всех тестов
     @AfterAll
     public static void globalTearDown() {
-        System.out.println("\n@AfterAll");
+        logger.info("\n@AfterAll");
     }
 }

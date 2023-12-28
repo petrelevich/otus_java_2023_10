@@ -1,17 +1,21 @@
 package ru.otus.objectpool;
 
-@SuppressWarnings("java:S106")
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class ConnectionPostgres implements Connection {
+    private static final Logger logger = LoggerFactory.getLogger(ConnectionPostgres.class);
+
     @Override
     public void connect() {
-        System.out.print("start connect...");
+        logger.info("start connect...");
         sleep(2000);
-        System.out.println("connected");
+        logger.info("connected");
     }
 
     @Override
     public void execSelect() {
-        System.out.println("run SELECT");
+        logger.info("run SELECT");
     }
 
     private void sleep(long millis) {

@@ -1,24 +1,20 @@
 package ru.outs.observer;
 
-import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Demo {
+    private static final Logger logger = LoggerFactory.getLogger(Demo.class);
+
     public static void main(String[] args) {
         var producer = new EventProducer();
         var consumerA = new ConsumerA();
         var consumerB = new ConsumerB();
 
-        var list = new ArrayList<Integer>();
-        list.add(1);
-        for (var i : list) {
-            if (i == 1)
-                list.add(2);
-        }
-
-        Boolean[] first = {true};
+        boolean[] first = {true};
 
         Listener temp = data -> {
-            System.out.println("Temp listener " + data);
+            logger.info("Temp listener:{}", data);
             if (first[0]) {
                 first[0] = false;
                 producer.event("EventB");
@@ -27,18 +23,18 @@ public class Demo {
 
         producer.addListener(temp);
         producer.addListener(consumerA);
-        //producer.addListener(consumerB.getListener());
+        producer.addListener(consumerB.getListener());
 
         producer.event("eventA");
-        //producer.event("eventB");
+        producer.event("eventB");
 
-        //producer.removeListener(temp);
+        producer.removeListener(temp);
 
-        //Критически важно удалять, когда не нужны
-        //producer.removeListener(consumerA);
-        //producer.removeListener(consumerB.getListener());
+        // Критически важно удалять, когда не нужны
+        producer.removeListener(consumerA);
+        producer.removeListener(consumerB.getListener());
 
-        //producer.event("eventC");
-        //producer.event("eventD");
+        producer.event("eventC");
+        producer.event("eventD");
     }
 }

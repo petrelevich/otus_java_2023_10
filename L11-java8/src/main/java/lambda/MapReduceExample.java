@@ -4,18 +4,13 @@ import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** author: Dmitry Arkhangelskiy Изобретаем свои лямбды */
-@SuppressWarnings({
-    "WeakerAccess",
-    "SameParameterValue",
-    "java:S106",
-    "java:S1854",
-    "java:S4276",
-    "java:S1612",
-    "java:S1481"
-})
+@SuppressWarnings({"WeakerAccess", "SameParameterValue", "java:S1854", "java:S4276", "java:S1612", "java:S1481"})
 public class MapReduceExample {
+    private static final Logger logger = LoggerFactory.getLogger(MapReduceExample.class);
 
     // Integer -> Double
     static class SquareRoot implements Function<Integer, Double> {
@@ -56,15 +51,15 @@ public class MapReduceExample {
 
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(4, 16, 25);
-        System.out.println(map(list, new SquareRoot()));
+        logger.info("{}", map(list, new SquareRoot()));
 
-        System.out.println(map(list, e -> Math.sqrt(e)));
+        logger.info("{}", map(list, e -> Math.sqrt(e)));
 
-        System.out.println(map(list, (Function<Integer, Double>) Math::sqrt));
+        logger.info("{}", map(list, (Function<Integer, Double>) Math::sqrt));
 
-        System.out.println(reduce(list, (v1, v2) -> v1 + v2, 0));
+        logger.info("{}", reduce(list, (v1, v2) -> v1 + v2, 0));
 
-        System.out.println(filter(list, a -> a % 2 == 0));
+        logger.info("{}", filter(list, a -> a % 2 == 0));
 
         Function<Integer, Double> func1 = v -> mySqrt(v);
         // mySqrt() is Integer -> Double so it can be referenced as Function<Double, Integer>

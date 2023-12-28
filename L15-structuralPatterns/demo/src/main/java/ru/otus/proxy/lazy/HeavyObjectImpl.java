@@ -1,7 +1,10 @@
 package ru.otus.proxy.lazy;
 
-public class HeavyObjectImpl implements HeavyObject {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class HeavyObjectImpl implements HeavyObject {
+    private static final Logger logger = LoggerFactory.getLogger(HeavyObjectImpl.class);
     private String value;
     private boolean isInit;
 
@@ -9,7 +12,7 @@ public class HeavyObjectImpl implements HeavyObject {
     public void init(String value) {
         this.value = value;
         isInit = true;
-        System.out.println("heavy long initialization...");
+        logger.info("heavy long initialization...");
     }
 
     @Override
@@ -24,8 +27,6 @@ public class HeavyObjectImpl implements HeavyObject {
 
     @Override
     public String toString() {
-        return "HeavyObject{" +
-                "value='" + value + '\'' +
-                '}';
+        return "HeavyObject{" + "value='" + value + '\'' + '}';
     }
 }

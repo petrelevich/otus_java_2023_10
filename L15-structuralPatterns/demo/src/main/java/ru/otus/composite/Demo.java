@@ -1,9 +1,14 @@
 package ru.otus.composite;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * <img src="http://starcraft.7x.ru/site.starcraft.ru/strategy/part_01_screen01-1.gif"/>
  */
 public class Demo {
+    private static final Logger logger = LoggerFactory.getLogger(Demo.class);
+
     public static void main(String[] args) {
         Unit marine1 = new Marine();
         Unit marine2 = new Marine();
@@ -18,7 +23,7 @@ public class Demo {
         group.addUnit(marine3);
         group.addUnit(tank);
 
-        System.out.println("first group:");
+        logger.info("first group:");
         group.move();
 
         // Можем и группу добавить в другую группу
@@ -26,7 +31,7 @@ public class Demo {
         group2.addUnit(group);
         group2.addUnit(new Tank());
 
-        System.out.println("second group:");
+        logger.info("second group:");
         group2.move();
     }
 }

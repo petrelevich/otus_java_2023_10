@@ -2,9 +2,11 @@ package functionalstyle;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings("java:S106")
 public class MutationExamples {
+    private static final Logger logger = LoggerFactory.getLogger(MutationExamples.class);
 
     private final List<TestObjectMutable> listMute =
             List.of(new TestObjectMutable(1), new TestObjectMutable(2), new TestObjectMutable(3));
@@ -23,14 +25,14 @@ public class MutationExamples {
         for (var elem : listMute) {
             newList.add(elem.updateValue(elem.value - 1));
         }
-        System.out.println(newList);
+        logger.info("{}", newList);
 
         // Лучше так - создаем новый экземпляр, если "надо бы поменять существующий"
         var newList2 = new ArrayList<TestObjectUnMutable>();
         for (var elem : listUnMute) {
             newList2.add(new TestObjectUnMutable(elem.value - 1));
         }
-        System.out.println(newList2);
+        logger.info("{}", newList2);
     }
 
     private static class TestObjectMutable {

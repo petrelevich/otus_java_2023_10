@@ -20,7 +20,7 @@ class EventProducer {
             try {
                 listeners.get(i).onUpdate(data);
             } catch (Exception ex) {
-                //логирование исключения
+                // логирование исключения
             }
         }
     }

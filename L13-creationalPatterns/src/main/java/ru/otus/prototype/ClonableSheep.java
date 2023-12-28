@@ -1,12 +1,15 @@
 package ru.otus.prototype;
 
 import java.util.Objects;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author sergey created on 19.09.18.
  */
-@SuppressWarnings({"java:S106", "java:S2975"})
+@SuppressWarnings({"java:S2975"})
 class ClonableSheep implements Cloneable {
+    private static final Logger logger = LoggerFactory.getLogger(ClonableSheep.class);
     private String name;
 
     ClonableSheep(String name) {
@@ -25,7 +28,7 @@ class ClonableSheep implements Cloneable {
     public ClonableSheep clone() throws CloneNotSupportedException {
         ClonableSheep sheep = (ClonableSheep) super.clone();
         // ...
-        System.out.println(sheep);
+        logger.info("{}", sheep);
         return sheep;
     }
 

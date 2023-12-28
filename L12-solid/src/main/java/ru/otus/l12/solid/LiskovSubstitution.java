@@ -1,10 +1,13 @@
 package ru.otus.l12.solid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * @author sergey created on 09.09.19.
  */
-@SuppressWarnings({"java:S106"})
 public class LiskovSubstitution {
+    private static final Logger logger = LoggerFactory.getLogger(LiskovSubstitution.class);
 
     /*
     Классический пример нарушения принципа -
@@ -23,21 +26,21 @@ public class LiskovSubstitution {
         rectangle.setHeight(height);
         rectangle.setWidth(width);
 
-        System.out.println("--- Rectangle rectangle = new Rectangle();");
-        System.out.println("height:" + height + " rectangle.height:" + rectangle.height);
-        System.out.println("width:" + width + " rectangle.width:" + rectangle.width);
+        logger.info("--- Rectangle rectangle = new Rectangle();");
+        logger.info("height:{}, rectangle.height:{}", height, rectangle.height);
+        logger.info("width:{}, rectangle.width:{}", width, rectangle.width);
 
         Rectangle rectangleStrange = new Square(); // factory.createRectangle()
         rectangleStrange.setHeight(height);
         rectangleStrange.setWidth(width);
 
-        System.out.println();
-        System.out.println("--- Rectangle rectangleStrange = new Square();");
-        System.out.println("height:" + height + " rectangleStrange.height:" + rectangleStrange.height);
-        System.out.println("width:" + width + " rectangleStrange.width:" + rectangleStrange.width);
+        logger.info("");
+        logger.info("--- Rectangle rectangleStrange = new Square();");
+        logger.info("height:{}, rectangleStrange.height:{}", height, rectangleStrange.height);
+        logger.info("width:{}, rectangleStrange.width:{}", width, rectangleStrange.width);
     }
 
-    private class Rectangle {
+    private static class Rectangle {
         private double height;
         private double width;
 
@@ -54,7 +57,7 @@ public class LiskovSubstitution {
         }
     }
 
-    private class Square extends Rectangle {
+    private static class Square extends Rectangle {
         @Override
         public void setHeight(double height) {
             super.setHeight(height);

@@ -1,6 +1,5 @@
 package ru.otus.decorator;
 
-
 public class DataSourceDecoratorAdder implements DataSource {
     private final DataSource dataSource;
 

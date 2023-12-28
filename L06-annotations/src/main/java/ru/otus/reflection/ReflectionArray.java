@@ -1,23 +1,26 @@
 package ru.otus.reflection;
 
 import java.lang.reflect.Array;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings("java:S106")
 public class ReflectionArray {
+    private static final Logger logger = LoggerFactory.getLogger(ReflectionArray.class);
+
     public static void main(String[] args) {
         int[] arrayInt = new int[0];
 
         Class<? extends int[]> clazz = arrayInt.getClass();
-        System.out.println("isArray: " + clazz.isArray());
-        System.out.println("TypeName: " + clazz.getTypeName());
+        logger.info("isArray: {}", clazz.isArray());
+        logger.info("TypeName: {}", clazz.getTypeName());
 
         Class<?> componentType = clazz.getComponentType();
-        System.out.println("componentType: " + componentType);
+        logger.info("componentType: {}", componentType);
 
-        System.out.println("-- creating Array");
+        logger.info("-- creating Array");
 
         float[] arrayFloat = (float[]) Array.newInstance(float.class, 5);
-        System.out.println("length:" + arrayFloat.length);
-        System.out.println("created TypeName:" + arrayFloat.getClass().getTypeName());
+        logger.info("length:{}", arrayFloat.length);
+        logger.info("created TypeName:{}", arrayFloat.getClass().getTypeName());
     }
 }

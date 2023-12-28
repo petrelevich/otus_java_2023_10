@@ -2,9 +2,12 @@ package ru.outs.memento;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class Originator {
-    //Фактически, это stack
+    private static final Logger logger = LoggerFactory.getLogger(Originator.class);
+    // Фактически, это stack
     private final Deque<Memento> stack = new ArrayDeque<>();
 
     private final DateTimeProvider dateTimeProvider;
@@ -19,7 +22,7 @@ class Originator {
 
     State restoreState() {
         var memento = stack.pop();
-        System.out.println("createdAt:" + memento.createdAt());
+        logger.info("createdAt:{}", memento.createdAt());
         return memento.state();
     }
 }

@@ -1,5 +1,8 @@
 package ru.otus.adapter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * <p>
  * RotaryHammer - Перфоратор.
@@ -32,8 +35,9 @@ package ru.otus.adapter;
  * </p>
  * <img src="https://torg123.ru/upload/iblock/72d/72d4708464550764716a52b173c24f57.jpg"/>
  */
-
 public class Demo {
+    private static final Logger logger = LoggerFactory.getLogger(Demo.class);
+
     public static void main(String[] args) {
         new Demo().usePattern();
         new Demo().alternative();
@@ -50,6 +54,6 @@ public class Demo {
         var rotaryHammer = new RotaryHammer();
         var drill = new Drill();
         // В нашем простом примере можно использовать и просто лямбду
-        rotaryHammer.drill(() -> System.out.println(drill));
+        rotaryHammer.drill(() -> logger.info("{}", drill));
     }
 }

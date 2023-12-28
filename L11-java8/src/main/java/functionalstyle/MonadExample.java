@@ -2,27 +2,31 @@ package functionalstyle;
 
 import java.util.ArrayList;
 import java.util.Optional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings({"java:S106", "java:S1192"})
+@SuppressWarnings({"java:S1192"})
 public class MonadExample {
+    private static final Logger logger = LoggerFactory.getLogger(MonadExample.class);
+
     public static void main(String[] args) {
         var monadExample = new MonadExample();
 
         var result = monadExample.function("test");
-        System.out.println(result);
+        logger.info(result);
 
         result = monadExample.function(null);
-        System.out.println(result);
+        logger.info(result);
 
         result = monadExample.functionWrong(null);
-        System.out.println(result);
+        logger.info(result);
 
-        System.out.println("------------------");
+        logger.info("------------------");
         result = monadExample.functionNorm("functionNorm");
-        System.out.println(result);
+        logger.info(result);
 
         result = monadExample.functionNorm(null);
-        System.out.println(result);
+        logger.info(result);
     }
 
     private String function(String str) {
@@ -53,8 +57,8 @@ public class MonadExample {
             list.add(optional.get());
             listUpper.add(optional.get().toUpperCase());
 
-            System.out.println(list);
-            System.out.println(listUpper);
+            logger.info("{}", list);
+            logger.info("{}", listUpper);
 
             return optional.get() + "+addStr";
         }

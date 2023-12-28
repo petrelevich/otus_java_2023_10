@@ -1,7 +1,11 @@
 package ru.otus.prototype;
 
-@SuppressWarnings("java:S106")
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Demo {
+    private static final Logger logger = LoggerFactory.getLogger(Demo.class);
+
     public static void main(String[] args) throws CloneNotSupportedException {
         copyExample();
         cloneExample();
@@ -9,17 +13,17 @@ public class Demo {
 
     /** Custom copy() */
     private static void copyExample() {
-        System.out.println("======== copyExample ========");
+        logger.info("======== copyExample ========");
         CopyableSheep original = new CopyableSheep("unknown");
 
         CopyableSheep copied = original.copy();
         copied.setName("Dolly");
 
-        System.out.println("original = " + original);
-        System.out.println("copied = " + copied);
-        System.out.println("original.getName() = " + original.getName());
-        System.out.println("copied.getName() = " + copied.getName());
-        System.out.println();
+        logger.info("original = {}", original);
+        logger.info("copied = {}", copied);
+        logger.info("original.getName() = {}", original.getName());
+        logger.info("copied.getName() = {}", copied.getName());
+        logger.info("");
     }
 
     /**
@@ -28,17 +32,17 @@ public class Demo {
      * @throws CloneNotSupportedException
      */
     private static void cloneExample() throws CloneNotSupportedException {
-        System.out.println("======== cloneExample ========");
+        logger.info("======== cloneExample ========");
 
         ClonableSheep original = new ClonableSheep("unknown");
 
         ClonableSheep cloned = original.clone();
         cloned.setName("Dolly");
 
-        System.out.println("original = " + original);
-        System.out.println("cloned = " + cloned);
-        System.out.println("original.getName() = " + original.getName());
-        System.out.println("cloned.getName() = " + cloned.getName());
-        System.out.println();
+        logger.info("original = {}", original);
+        logger.info("cloned = {}", cloned);
+        logger.info("original.getName() = {}", original.getName());
+        logger.info("cloned.getName() = {}", cloned.getName());
+        logger.info("");
     }
 }

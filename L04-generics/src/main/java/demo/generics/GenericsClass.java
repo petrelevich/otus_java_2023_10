@@ -2,9 +2,12 @@ package demo.generics;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings({"java:S106", "java:S1481", "java:S1854", "java:S1068"})
+@SuppressWarnings({"java:S1481", "java:S1854", "java:S1068"})
 public class GenericsClass<K, V> {
+    private static final Logger logger = LoggerFactory.getLogger(GenericsClass.class);
 
     private final Map<K, V> map = new HashMap<>();
     private K superKey;
@@ -25,6 +28,6 @@ public class GenericsClass<K, V> {
     }
 
     private void print() {
-        map.forEach((key, val) -> System.out.println("key:" + key + " , val:" + val));
+        map.forEach((key, val) -> logger.info("key:{}, val:{}", key, val));
     }
 }

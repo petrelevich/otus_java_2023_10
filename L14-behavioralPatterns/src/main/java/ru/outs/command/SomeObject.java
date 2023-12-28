@@ -17,8 +17,6 @@ public class SomeObject {
 
     @Override
     public String toString() {
-        return "SomeObject{" +
-                "value='" + value + '\'' +
-                '}';
+        return "SomeObject{" + "value='" + value + '\'' + '}';
     }
 }

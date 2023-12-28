@@ -1,6 +1,5 @@
 package ru.otus.adapter;
 
-
 /**
  * Перфоратор
  */

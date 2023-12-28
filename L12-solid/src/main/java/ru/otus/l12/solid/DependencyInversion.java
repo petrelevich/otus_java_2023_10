@@ -3,7 +3,7 @@ package ru.otus.l12.solid;
 /**
  * @author sergey created on 09.09.19.
  */
-@SuppressWarnings("java:S1068")
+@SuppressWarnings({"java:S1068", "java:S1481", "java:S1144", "java:S1854"})
 public class DependencyInversion {
 
     interface SteeringWheel {}
@@ -21,7 +21,7 @@ public class DependencyInversion {
         }
     }
 
-    class CarDiesel{
+    class CarDiesel {
         private SteeringWheel steeringWheel;
         private Engine engine;
 
@@ -41,15 +41,15 @@ public class DependencyInversion {
             this.engine = engine;
         }
 
-        public void move(){
+        public void move() {
             //
         }
     }
 
-    private void smMthd(){
+    private void smMthd() {
 
-        var car = new Car( new GenericWheel(), new DieselEngine() );
-        var car2 = new Car( new GenericWheel(), new GasEngine() );
+        var car = new Car(new GenericWheel(), new DieselEngine());
+        var car2 = new Car(new GenericWheel(), new GasEngine());
     }
 
     class GasEngine implements Engine {}

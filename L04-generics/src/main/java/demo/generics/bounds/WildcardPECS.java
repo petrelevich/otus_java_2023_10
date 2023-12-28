@@ -6,9 +6,12 @@ import demo.generics.bounds.entries.HomeCat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings({"java:S106", "java:S1481", "java:S1854"})
+@SuppressWarnings({"java:S1481", "java:S1854"})
 public class WildcardPECS {
+    private static final Logger logger = LoggerFactory.getLogger(WildcardPECS.class);
 
     public static void main(String[] args) {
 
@@ -38,7 +41,7 @@ public class WildcardPECS {
         List<? extends Cat> catList2 = Arrays.asList(new Cat(), new HomeCat("d"));
         // catList.addAll(catList2); //Ошибка
 
-        catList.forEach(System.out::println);
+        catList.forEach(val -> logger.info("{}", val));
     }
 
     private static void printConsumer(List<? super Cat> catList) {
@@ -48,8 +51,7 @@ public class WildcardPECS {
         catList.add(new HomeCat("noName"));
 
         Object item = catList.get(0);
-        System.out.println("item from the list:" + item);
-
-        catList.forEach(System.out::println);
+        logger.info("item from the list:{}", item);
+        catList.forEach(val -> logger.info("{}", val));
     }
 }

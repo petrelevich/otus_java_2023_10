@@ -1,26 +1,30 @@
 package ru.otus.reflection;
 
-@SuppressWarnings("java:S106")
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Auseful {
+    private static final Logger logger = LoggerFactory.getLogger(Auseful.class);
+
     public static void main(String[] args) throws Exception {
 
         var primitiveString = String.class.isPrimitive();
         var primitiveInt = int.class.isPrimitive();
-        System.out.println("primitiveString:" + primitiveString + ", primitiveInt:" + primitiveInt);
+        logger.info("primitiveString:{}, primitiveInt:{}", primitiveString, primitiveInt);
 
         int[] arr = {1, 2};
         var isArray = arr.getClass().isArray();
         var componentArr = arr.getClass().getComponentType();
-        System.out.println("isArray:" + isArray + ",  componentArr:" + componentArr);
+        logger.info("isArray:{}, componentArr:{}", isArray, componentArr);
 
         Class<?> string = Class.forName("java.lang.String");
         var isIterableString = Iterable.class.isAssignableFrom(string);
 
         Class<?> list = Class.forName("java.util.ArrayList");
         var isIterableList = Iterable.class.isAssignableFrom(list);
-        System.out.println("isIterableString:" + isIterableString + ", isIterableList:" + isIterableList);
+        logger.info("isIterableString:{}, isIterableList:{}", isIterableString, isIterableList);
 
         var hasAnnotation = DemoClass.class.getMethod("toString").isAnnotationPresent(SimpleAnnotation.class);
-        System.out.println("hasAnnotation:" + hasAnnotation);
+        logger.info("hasAnnotation:{}", hasAnnotation);
     }
 }

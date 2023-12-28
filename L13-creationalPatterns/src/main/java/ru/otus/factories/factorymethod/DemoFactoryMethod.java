@@ -1,9 +1,12 @@
 package ru.otus.factories.factorymethod;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.otus.factories.simplefactory.Configuration;
 
-@SuppressWarnings("java:S106")
 public class DemoFactoryMethod {
+    private static final Logger logger = LoggerFactory.getLogger(DemoFactoryMethod.class);
+
     public static void main(String[] args) {
         // Пример:
         // У нас есть какая-то конфигурация
@@ -26,6 +29,6 @@ public class DemoFactoryMethod {
     }
 
     private static void readData(Configuration config) {
-        System.out.println(config.params());
+        logger.atInfo().setMessage("{}").addArgument(config::params).log();
     }
 }
