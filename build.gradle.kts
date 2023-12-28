@@ -35,6 +35,7 @@ allprojects {
     val guava: String by project
     val jmh: String by project
     val asm: String by project
+    val glassfishJson: String by project
 
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {
@@ -48,6 +49,7 @@ allprojects {
             dependency("org.openjdk.jmh:jmh-core:$jmh")
             dependency("org.openjdk.jmh:jmh-generator-annprocess:$jmh")
             dependency("org.ow2.asm:asm-commons:$asm")
+            dependency("org.glassfish:jakarta.json:$glassfishJson")
         }
     }
 
@@ -68,6 +70,7 @@ allprojects {
             force("org.sonarsource.sslr:sslr-core:1.24.0.633")
             force("org.eclipse.platform:org.eclipse.osgi:3.18.400")
             force("org.eclipse.platform:org.eclipse.equinox.common:3.18.0")
+            force("com.google.j2objc:j2objc-annotations:2.8")
         }
     }
 }
