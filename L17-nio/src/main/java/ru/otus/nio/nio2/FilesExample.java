@@ -6,7 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,8 +71,7 @@ public class FilesExample {
 
     private void walk() {
         try (Stream<Path> paths = Files.walk(Paths.get("L17-nio"))) {
-            var fileNames =  paths
-                    .filter(Files::isRegularFile)
+            var fileNames = paths.filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().contains(".java"))
                     .map(path -> {
                         try {
@@ -83,7 +81,6 @@ public class FilesExample {
                             logger.error("reading error, fileName:{}", path.getFileName(), e);
                         }
                         return path.getFileName().toString();
-
                     })
                     .toList();
             logger.info("file names:{}", fileNames);

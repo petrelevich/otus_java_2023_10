@@ -26,9 +26,9 @@ public class DemoIO {
                 .addArgument(() -> System.getProperty("user.dir"))
                 .log();
         var demoIO = new DemoIO();
-        //demoIO.zipFile("textFile.txt");
-       //   demoIO.writeObject("person.bin");
-          demoIO.readObject("person.bin");
+        // demoIO.zipFile("textFile.txt");
+        //   demoIO.writeObject("person.bin");
+        demoIO.readObject("person.bin");
         //  demoIO.writeTextFile("textFile.txt");
         //  demoIO.readTextFile("textFile.txt");
 
