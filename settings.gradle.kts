@@ -33,6 +33,7 @@ include("L18-jdbc:demo")
 include("L18-jdbc:homework")
 
 include("L20-hibernate")
+include("L21-cache")
 
 pluginManagement {
     val jgitver: String by settings
