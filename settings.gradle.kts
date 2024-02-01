@@ -38,6 +38,12 @@ include("L21-cache")
 include("L22-jpql:class-demo")
 include("L22-jpql:homework-template")
 
+include ("L23-noSQL:mongo-db-demo")
+include ("L23-noSQL:mongo-db-reactive-demo")
+include ("L23-noSQL:neo4j-demo")
+include ("L23-noSQL:redis-demo")
+include ("L23-noSQL:cassandra-demo")
+
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
