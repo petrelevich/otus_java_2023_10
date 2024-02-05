@@ -6,7 +6,8 @@ import ru.otus.dao.InMemoryUserDao;
 import ru.otus.dao.UserDao;
 import ru.otus.server.UsersWebServer;
 import ru.otus.server.UsersWebServerSimple;
-import ru.otus.services.*;
+import ru.otus.services.TemplateProcessor;
+import ru.otus.services.TemplateProcessorImpl;
 
 /*
     Полезные для демо ссылки

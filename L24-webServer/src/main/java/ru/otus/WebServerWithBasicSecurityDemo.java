@@ -16,7 +16,6 @@ import ru.otus.services.TemplateProcessor;
 import ru.otus.services.TemplateProcessorImpl;
 
 import java.net.URI;
-import java.nio.file.Paths;
 
 /*
     Полезные для демо ссылки
