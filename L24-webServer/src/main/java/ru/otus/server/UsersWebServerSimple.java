@@ -46,7 +46,7 @@ public class UsersWebServerSimple implements UsersWebServer {
         server.stop();
     }
 
-    private Server initContext() {
+    private void initContext() {
 
         ResourceHandler resourceHandler = createResourceHandler();
         ServletContextHandler servletContextHandler = createServletContextHandler();
@@ -56,7 +56,6 @@ public class UsersWebServerSimple implements UsersWebServer {
         sequence.addHandler(applySecurity(servletContextHandler, "/users", "/api/user/*"));
 
         server.setHandler(sequence);
-        return server;
     }
 
     @SuppressWarnings({"squid:S1172"})
