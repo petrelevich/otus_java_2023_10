@@ -48,6 +48,8 @@ allprojects {
     val jettyServlet: String by project
     val freemarker: String by project
 
+    val reflections: String by project
+
     apply(plugin = "io.spring.dependency-management")
     dependencyManagement {
         dependencies {
@@ -79,6 +81,8 @@ allprojects {
             dependency("org.eclipse.jetty:jetty-io:$jetty")
             dependency("org.eclipse.jetty:jetty-util:$jetty")
             dependency("org.freemarker:freemarker:$freemarker")
+
+            dependency("org.reflections:reflections:$reflections")
         }
     }
 
