@@ -2,6 +2,7 @@ package ru.otus;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.net.URI;
 import org.eclipse.jetty.security.HashLoginService;
 import org.eclipse.jetty.security.LoginService;
 import org.eclipse.jetty.util.resource.PathResourceFactory;
@@ -11,11 +12,8 @@ import ru.otus.dao.UserDao;
 import ru.otus.helpers.FileSystemHelper;
 import ru.otus.server.UsersWebServer;
 import ru.otus.server.UsersWebServerWithBasicSecurity;
-import ru.otus.services.InMemoryLoginServiceImpl;
 import ru.otus.services.TemplateProcessor;
 import ru.otus.services.TemplateProcessorImpl;
-
-import java.net.URI;
 
 /*
     Полезные для демо ссылки
@@ -46,7 +44,7 @@ public class WebServerWithBasicSecurityDemo {
         Resource configResource = pathResourceFactory.newResource(URI.create(hashLoginServiceConfigPath));
 
         LoginService loginService = new HashLoginService(REALM_NAME, configResource);
-        //LoginService loginService = new InMemoryLoginServiceImpl(userDao); // NOSONAR
+        // LoginService loginService = new InMemoryLoginServiceImpl(userDao); // NOSONAR
 
         UsersWebServer usersWebServer =
                 new UsersWebServerWithBasicSecurity(WEB_SERVER_PORT, loginService, userDao, gson, templateProcessor);

@@ -67,7 +67,8 @@ public class UsersWebServerSimple implements UsersWebServer {
         ResourceHandler resourceHandler = new ResourceHandler();
         resourceHandler.setDirAllowed(false);
         resourceHandler.setWelcomeFiles(START_PAGE_NAME);
-        resourceHandler.setBaseResourceAsString(FileSystemHelper.localFileNameOrResourceNameToFullPath(COMMON_RESOURCES_DIR));
+        resourceHandler.setBaseResourceAsString(
+                FileSystemHelper.localFileNameOrResourceNameToFullPath(COMMON_RESOURCES_DIR));
         return resourceHandler;
     }
 

@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
 import org.eclipse.jetty.ee10.servlet.security.ConstraintMapping;
 import org.eclipse.jetty.ee10.servlet.security.ConstraintSecurityHandler;
@@ -18,7 +17,6 @@ import ru.otus.services.TemplateProcessor;
 public class UsersWebServerWithBasicSecurity extends UsersWebServerSimple {
     private static final String ROLE_NAME_USER = "user";
     private static final String ROLE_NAME_ADMIN = "admin";
-    private static final String CONSTRAINT_NAME = "auth";
 
     private final LoginService loginService;
 

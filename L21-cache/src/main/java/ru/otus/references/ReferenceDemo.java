@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 public class ReferenceDemo {
     private static final Logger logger = LoggerFactory.getLogger(ReferenceDemo.class);
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         strong();
         // weak();
         // soft();
