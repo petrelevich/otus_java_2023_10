@@ -56,6 +56,7 @@ include ("L27-websocket:messager")
 include ("L27-websocket:messager-starter")
 include ("L27-websocket:application")
 
+include ("L28-springDataJdbc")
 
 pluginManagement {
     val jgitver: String by settings
