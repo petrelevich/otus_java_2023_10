@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.crm.model.Client;
 import ru.otus.crm.repository.ClientRepository;
 import ru.otus.sessionmanager.TransactionManager;
@@ -23,6 +24,7 @@ public class DbServiceClientImpl implements DBServiceClient {
     }
 
     @Override
+    @Transactional
     public Client saveClient(Client client) {
         return transactionManager.doInTransaction(() -> {
             var savedClient = clientRepository.save(client);
