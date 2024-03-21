@@ -1,8 +1,5 @@
 package ru.otus.monitor;
 
-
-
-
 public class SomeClass {
     private Long id;
     private String name;
@@ -11,7 +8,7 @@ public class SomeClass {
         return id;
     }
 
-    public void setId( Long id ) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -19,7 +16,7 @@ public class SomeClass {
         return name;
     }
 
-    public void setName( String name ) {
+    public void setName(String name) {
         this.name = name;
     }
 }
