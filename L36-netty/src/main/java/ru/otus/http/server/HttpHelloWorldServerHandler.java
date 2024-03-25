@@ -95,7 +95,7 @@ public class HttpHelloWorldServerHandler extends SimpleChannelInboundHandler<Ful
 
         var nameList = new QueryStringDecoder(msg.uri()).parameters().get("name");
         if (nameList != null && !nameList.isEmpty()) {
-            return " Hi, " + nameList.get(0) + ", now is:" + LocalTime.now();
+            return " Hi, " + nameList.getFirst() + ", now is:" + LocalTime.now();
         } else {
             return " Hi, now is:" + LocalTime.now();
         }
